@@ -1,48 +1,49 @@
 import "./style.css";
-
 import "./tailwind.css";
-
 import logoUrl from "../assets/logo.svg";
 import { Link } from "../components/Link.js";
 
 export default function LayoutDefault({ children }: { children: React.ReactNode }) {
   return (
-    <div className={"flex max-w-5xl m-auto"}>
-      <Sidebar>
-        <Logo />
-        <Link href="/">Welcome</Link>
-        <Link href="/todo">Todo</Link>
-        <Link href="/star-wars">Data Fetching</Link>
-        {""}
-      </Sidebar>
-      <Content>{children}</Content>
-    </div>
-  );
-}
+    <div className="min-h-screen bg-gray-50">
+      <nav className="bg-white shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <Logo />
+            <div className="flex space-x-8">
+              <Link href="/" className="text-gray-700 hover:text-indigo-600">Home</Link>
+              <Link href="/recipes" className="text-gray-700 hover:text-indigo-600">Recipes</Link>
+              <Link href="/categories" className="text-gray-700 hover:text-indigo-600">Categories</Link>
+              <Link href="/favorites" className="text-gray-700 hover:text-indigo-600">Favorites</Link>
+            </div>
+            <div>
+              <Link href="/create" className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700">
+                Add Recipe
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
 
-function Sidebar({ children }: { children: React.ReactNode }) {
-  return (
-    <div id="sidebar" className={"p-5 flex flex-col shrink-0 border-r-2 border-r-gray-200"}>
-      {children}
-    </div>
-  );
-}
-
-function Content({ children }: { children: React.ReactNode }) {
-  return (
-    <div id="page-container">
-      <div id="page-content" className={"p-5 pb-12 min-h-screen"}>
+      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         {children}
-      </div>
+      </main>
+
+      <footer className="bg-white border-t mt-auto">
+        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-gray-500">© 2024 Recipe Book. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 }
 
 function Logo() {
   return (
-    <div className={"p-5 mb-2"}>
-      <a href="/">
-        <img src={logoUrl} height={64} width={64} alt="logo" />
+    <div className="flex items-center">
+      <a href="/" className="flex items-center">
+        <img src={logoUrl} className="h-8 w-8" alt="Recipe Book Logo" />
+        <span className="ml-2 text-xl font-bold text-gray-900">Recipe Book</span>
       </a>
     </div>
   );

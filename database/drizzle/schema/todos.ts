@@ -9,3 +9,4 @@ export const todoTable = sqliteTable("todos", {
 // You can then infer the types for selecting and inserting
 export type TodoItem = typeof todoTable.$inferSelect;
 export type TodoInsert = typeof todoTable.$inferInsert;
+ 

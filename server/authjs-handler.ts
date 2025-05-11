@@ -16,7 +16,7 @@ if (!globalThis.crypto) {
    * Polyfill needed if Auth.js code runs on node18
    */
   Object.defineProperty(globalThis, "crypto", {
-    value: await import("node:crypto").then((crypto) => crypto.webcrypto as Crypto),
+    value: await import("node:crypto").then((crypto) => crypto.webcrypto as unknown as Crypto),
     writable: false,
     configurable: true,
   });
